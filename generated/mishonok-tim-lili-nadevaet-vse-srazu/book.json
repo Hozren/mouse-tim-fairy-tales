@@ -7,8 +7,8 @@
   "cover": "images/cover.png",
   "stylesheet": "epub.css",
   "rendering": {
-    "max_image_dimension": 1800,
-    "jpeg_quality": 88
+    "max_image_dimension": 1100,
+    "jpeg_quality": 76
   },
   "scenes": [
     {

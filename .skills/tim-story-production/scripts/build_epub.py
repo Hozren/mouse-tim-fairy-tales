@@ -34,8 +34,8 @@ IMAGE_TYPES = {
     ".svg": "image/svg+xml",
 }
 
-DEFAULT_JPEG_QUALITY = 88
-DEFAULT_MAX_IMAGE_DIMENSION = 1800
+DEFAULT_JPEG_QUALITY = 76
+DEFAULT_MAX_IMAGE_DIMENSION = 1100
 
 
 def fail(message: str) -> None:
@@ -140,7 +140,13 @@ def write_jpeg_derivative(
             image = background
         else:
             image = image.convert("RGB")
-        image.save(destination, format="JPEG", quality=quality, optimize=True)
+        image.save(
+            destination,
+            format="JPEG",
+            quality=quality,
+            optimize=True,
+            progressive=True,
+        )
     return destination
 
 

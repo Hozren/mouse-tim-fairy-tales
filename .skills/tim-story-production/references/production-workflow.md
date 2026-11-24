@@ -64,7 +64,7 @@ Defaults:
 
 After each image, inspect it rather than trusting the generation call. Verify character identity, action, object count, clothing continuity, emotional tone, anatomy, absence of text, and consistency with adjacent scenes. Regenerate only the failed scene, preserving the same anchor and continuity facts.
 
-Keep lossless master images. For delivery EPUBs, JPEG derivatives around quality 85–90 are acceptable when PNGs exceed the messaging or reader size limit; never overwrite the masters.
+Keep lossless master images. For ordinary screen-reading EPUB and PDF editions, use JPEG derivatives around 1100 pixels on the longest side and quality 76; this is roughly 190 dpi at the PDF image size used by the project. Raise the publication profile only for an explicit print-oriented export. Never overwrite the masters.
 
 ## 5. Required story directory
 
