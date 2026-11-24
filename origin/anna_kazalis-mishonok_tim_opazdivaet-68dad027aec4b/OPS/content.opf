@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns="http://www.idpf.org/2007/opf" version="2.0" unique-identifier="bookid" xmlns:opf="http://www.idpf.org/2007/opf" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<metadata>
+<dc:title>Мышонок Тим опаздывает</dc:title>
+<dc:creator>Анна Казалис</dc:creator>
+<meta name="FB2.book-info.translator" content="Мария Андреевна Мельниченко"/>
+<dc:language>ru</dc:language>
+<dc:description>Серия книг про смешного и обаятельного мышонка Тима поможет малышам понимать, признавать и называть свои чувства, научиться общаться со сверстниками и справляться с трудными ситуациями. Сегодня утром мышонок Тим совсем не сразу вылез из теплой постельки. Доедать завтрак он тоже не спешил. А после еды вдобавок взялся за игрушки… Но ведь его ждут в детском саду! У них сегодня экскурсия!.. Почему же так важно делать все дела вовремя? Скоро мышонок Тим узнает об этом и больше никогда не будет опаздывать. </dc:description>
+<meta name="FB2.book-info.date" content="2021-01-01"/>
+<dc:date>2021</dc:date>
+<meta name="FB2.document-info.program-used" content="FictionBook Editor Release 2.6.6"/>
+<meta name="FB2.document-info.src-url" content="http://www.litres.ru/pages/biblio_book/?art=71293291"/>
+<meta name="FB2.document-info.history" content="v 1.0 "/>
+<meta name="FB2.document-info.id" content="8df0df54-799f-11e2-ad35-002590591ed2"/>
+<meta name="FB2.document-info.version" content="1"/>
+<meta name="FB2.document-info.date" content="2021-01-01"/>
+<dc:identifier id="bookid">urn:uuid:8df0df54-799f-11e2-ad35-002590591ed2</dc:identifier>
+<dc:publisher>РОСМЭН</dc:publisher>
+<meta name="FB2.publish-info.book-name" content="Мышонок Тим опаздывает"/>
+<meta name="FB2.publish-info.city" content="Москва"/>
+<meta name="FB2.publish-info.year" content="2022"/>
+<dc:identifier id="bookid1">isbn:978-5-353-09972-7</dc:identifier>
+<meta name="FB2EPUB.version" content="0.5.0"/>
+<meta name="FB2EPUB.conversionDate" content="2025-07-25T08:01:05+00:00"/>
+<meta name="cover" content="id1"/>
+</metadata>
+<manifest>
+<item href="images/i_003.jpg" media-type="image/jpeg" id="id2"/>
+<item href="style.css" media-type="text/css" id="id3"/>
+<item href="cover.xhtml" media-type="application/xhtml+xml" id="id4"/>
+<item href="images/i_017.jpg" media-type="image/jpeg" id="id5"/>
+<item href="images/i_008.jpg" media-type="image/jpeg" id="id6"/>
+<item href="fonts/Times-New-Roman-400-8df0df54-799f-11e2-ad35-002590591ed2.otf" media-type="application/vnd.ms-opentype" id="id7"/>
+<item href="images/cover.jpg" media-type="image/jpeg" id="id1"/>
+<item href="images/i_014.jpg" media-type="image/jpeg" id="id8"/>
+<item href="images/i_005.jpg" media-type="image/jpeg" id="id9"/>
+<item href="images/i_019.jpg" media-type="image/jpeg" id="id10"/>
+<item href="images/i_011.jpg" media-type="image/jpeg" id="id11"/>
+<item href="images/i_002.jpg" media-type="image/jpeg" id="id12"/>
+<item href="images/i_016.jpg" media-type="image/jpeg" id="id13"/>
+<item href="images/i_007.jpg" media-type="image/jpeg" id="id14"/>
+<item href="ch1.xhtml" media-type="application/xhtml+xml" id="id15"/>
+<item href="images/i_013.jpg" media-type="image/jpeg" id="id16"/>
+<item href="toc.ncx" media-type="application/x-dtbncx+xml" id="id17"/>
+<item href="images/i_004.jpg" media-type="image/jpeg" id="id18"/>
+<item href="fonts/Times-New-Roman-700-8df0df54-799f-11e2-ad35-002590591ed2.otf" media-type="application/vnd.ms-opentype" id="id19"/>
+<item href="images/i_018.jpg" media-type="image/jpeg" id="id20"/>
+<item href="images/i_009.jpg" media-type="image/jpeg" id="id21"/>
+<item href="images/i_010.jpg" media-type="image/jpeg" id="id22"/>
+<item href="fonts/Times-New-Roman-700-Italic-8df0df54-799f-11e2-ad35-002590591ed2.otf" media-type="application/vnd.ms-opentype" id="id23"/>
+<item href="images/i_001.jpg" media-type="image/jpeg" id="id24"/>
+<item href="images/i_015.jpg" media-type="image/jpeg" id="id25"/>
+<item href="images/i_020.jpg" media-type="image/jpeg" id="id26"/>
+<item href="images/i_006.jpg" media-type="image/jpeg" id="id27"/>
+<item href="images/i_012.jpg" media-type="image/jpeg" id="id28"/>
+</manifest>
+<spine toc="id17">
+<itemref idref="id4"/>
+<itemref idref="id15"/>
+</spine>
+<guide><reference href="images/cover.jpg" type="cover" title="cover"/>
+</guide></package>

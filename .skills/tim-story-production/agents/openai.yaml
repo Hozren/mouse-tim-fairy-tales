@@ -1,0 +1,4 @@
+interface:
+  display_name: "Производство сказок о Тиме"
+  short_description: "Создание иллюстрированных сказок и EPUB3"
+  default_prompt: "Use $tim-story-production to create a new illustrated story and validated EPUB3 from my premise."

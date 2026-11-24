@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns="http://www.idpf.org/2007/opf" version="2.0" unique-identifier="bookid" xmlns:opf="http://www.idpf.org/2007/opf" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<metadata>
+<dc:title>Мышонок Тим злится</dc:title>
+<dc:creator>Анна Казалис</dc:creator>
+<dc:language>ru</dc:language>
+<dc:description>Серия книг про смешного и обаятельного мышонка Тима поможет малышам понимать, признавать и называть свои чувства, научиться общаться со сверстниками и справляться с трудными ситуациями. Сегодня у мышонка Тима плохой день. Все идет не так. На завтрак – хлопья (а он хотел крекеры!). Воспитательница в детском саду рассказывает сказки, которые он уже знает. Друг не дает поиграть с машинкой. А только-только купленный воздушный шарик сразу лопается! Тим ужасно злится и обвиняет в своих бедах всех подряд. Но скоро мышонок поймет, что жизнь и не должна быть идеальной, а на всякие мелкие неприятности лучше смотреть с улыбкой. </dc:description>
+<meta name="FB2.book-info.date" content="2023-01-01"/>
+<dc:date>2023</dc:date>
+<meta name="FB2.document-info.program-used" content="FictionBook Editor Release 2.6.6"/>
+<meta name="FB2.document-info.src-url" content="http://www.litres.ru/pages/biblio_book/?art=71881144"/>
+<meta name="FB2.document-info.history" content="v 1.0 "/>
+<meta name="FB2.document-info.id" content="ce54101a-17e6-11f0-8ce3-0cc47af30fe4"/>
+<meta name="FB2.document-info.version" content="1"/>
+<meta name="FB2.document-info.date" content="2023-01-01"/>
+<dc:identifier id="bookid">urn:uuid:ce54101a-17e6-11f0-8ce3-0cc47af30fe4</dc:identifier>
+<dc:publisher>РОСМЭН</dc:publisher>
+<meta name="FB2.publish-info.book-name" content="Мышонок Тим злится"/>
+<meta name="FB2.publish-info.city" content="Москва"/>
+<meta name="FB2.publish-info.year" content="2023"/>
+<dc:identifier id="bookid1">isbn:978-5-353-11385-0</dc:identifier>
+<meta name="FB2EPUB.version" content="0.5.0"/>
+<meta name="FB2EPUB.conversionDate" content="2025-07-25T08:02:22+00:00"/>
+<meta name="cover" content="id1"/>
+</metadata>
+<manifest>
+<item href="style.css" media-type="text/css" id="id2"/>
+<item href="cover.xhtml" media-type="application/xhtml+xml" id="id3"/>
+<item href="images/i_017.jpg" media-type="image/jpeg" id="id4"/>
+<item href="images/i_008.jpg" media-type="image/jpeg" id="id5"/>
+<item href="images/cover.jpg" media-type="image/jpeg" id="id1"/>
+<item href="images/i_014.jpg" media-type="image/jpeg" id="id6"/>
+<item href="images/i_005.jpg" media-type="image/jpeg" id="id7"/>
+<item href="images/i_011.jpg" media-type="image/jpeg" id="id8"/>
+<item href="fonts/Times-New-Roman-700-Italic-ce54101a-17e6-11f0-8ce3-0cc47af30fe4.otf" media-type="application/vnd.ms-opentype" id="id9"/>
+<item href="images/i_002.jpg" media-type="image/jpeg" id="id10"/>
+<item href="images/i_016.jpg" media-type="image/jpeg" id="id11"/>
+<item href="images/i_007.jpg" media-type="image/jpeg" id="id12"/>
+<item href="ch1.xhtml" media-type="application/xhtml+xml" id="id13"/>
+<item href="images/i_013.jpg" media-type="image/jpeg" id="id14"/>
+<item href="toc.ncx" media-type="application/x-dtbncx+xml" id="id15"/>
+<item href="images/i_004.jpg" media-type="image/jpeg" id="id16"/>
+<item href="images/i_003.png" media-type="image/png" id="id17"/>
+<item href="images/i_009.jpg" media-type="image/jpeg" id="id18"/>
+<item href="images/i_010.jpg" media-type="image/jpeg" id="id19"/>
+<item href="fonts/Times-New-Roman-400-ce54101a-17e6-11f0-8ce3-0cc47af30fe4.otf" media-type="application/vnd.ms-opentype" id="id20"/>
+<item href="images/i_001.jpg" media-type="image/jpeg" id="id21"/>
+<item href="fonts/Times-New-Roman-700-ce54101a-17e6-11f0-8ce3-0cc47af30fe4.otf" media-type="application/vnd.ms-opentype" id="id22"/>
+<item href="images/i_015.jpg" media-type="image/jpeg" id="id23"/>
+<item href="images/i_006.jpg" media-type="image/jpeg" id="id24"/>
+<item href="images/i_012.jpg" media-type="image/jpeg" id="id25"/>
+</manifest>
+<spine toc="id15">
+<itemref idref="id3"/>
+<itemref idref="id13"/>
+</spine>
+<guide><reference href="images/cover.jpg" type="cover" title="cover"/>
+</guide></package>

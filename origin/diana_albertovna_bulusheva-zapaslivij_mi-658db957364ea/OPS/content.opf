@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns="http://www.idpf.org/2007/opf" version="2.0" unique-identifier="bookid" xmlns:opf="http://www.idpf.org/2007/opf" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<metadata>
+<dc:title>Запасливый мышонок Тим</dc:title>
+<dc:creator>Диана Альбертовна Булушева</dc:creator>
+<dc:language>ru</dc:language>
+<dc:description>Сказка про мышонка Тима, который очень любил копить разные вещи и не очень любил раскладывать их по своим местам. Но в итоге Тим понял, что свои вещи нужно держать в порядке и не заводить их больше, чем необходимо. Иногда родителям сложно объяснить детям, казалось бы простые вещи. В таких ситуациях на помощь всегда приходят сказки. Это вторая книга из серии "Лисьи сказки", которые рассказывают простым языком о важных вещах. С любовью к детям, автор Диана Булушева. </dc:description>
+<meta name="FB2.book-info.date" content="2023-11-26"/>
+<dc:date>2023</dc:date>
+<meta name="FB2.document-info.program-used" content="calibre 5.12.0, FictionBook Editor Release 2.7.2"/>
+<meta name="FB2.document-info.src-url" content="http://www.litres.ru/pages/biblio_book/?art=70052509"/>
+<meta name="FB2.document-info.id" content="b5cdfec0-05d0-4bef-b285-8e3d27c71a4c"/>
+<meta name="FB2.document-info.version" content="1.0"/>
+<meta name="FB2.document-info.date" content="2023-11-26"/>
+<dc:identifier id="bookid">urn:uuid:b5cdfec0-05d0-4bef-b285-8e3d27c71a4c</dc:identifier>
+<dc:publisher>SelfPub</dc:publisher>
+<meta name="FB2.publish-info.year" content="2023"/>
+<meta name="FB2EPUB.version" content="0.5.0"/>
+<meta name="FB2EPUB.conversionDate" content="2023-12-02T00:01:07+00:00"/>
+<meta name="cover" content="id1"/>
+</metadata>
+<manifest>
+<item href="style.css" media-type="text/css" id="id2"/>
+<item href="images/cover.jpg" media-type="image/jpeg" id="id1"/>
+<item href="ch1.xhtml" media-type="application/xhtml+xml" id="id3"/>
+<item href="cover.xhtml" media-type="application/xhtml+xml" id="id4"/>
+<item href="toc.ncx" media-type="application/x-dtbncx+xml" id="id5"/>
+<item href="fonts/Times-New-Roman-400-b5cdfec0-05d0-4bef-b285-8e3d27c71a4c.otf" media-type="application/vnd.ms-opentype" id="id6"/>
+<item href="fonts/Times-New-Roman-700-b5cdfec0-05d0-4bef-b285-8e3d27c71a4c.otf" media-type="application/vnd.ms-opentype" id="id7"/>
+</manifest>
+<spine toc="id5">
+<itemref idref="id4"/>
+<itemref idref="id3"/>
+</spine>
+<guide><reference href="images/cover.jpg" type="cover" title="cover"/>
+</guide></package>
