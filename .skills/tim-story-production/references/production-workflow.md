@@ -94,6 +94,8 @@ Use `scripts/build_epub.py` with the story directory. It produces EPUB3 with XHT
 
 Use `scripts/build_pdf.py` with the same story directory after installing `.github/requirements-build.txt`. It produces an A4 illustrated PDF from the same `book.json`, with a Unicode font and one opening page per scene.
 
+Both publication builders create optimized JPEG derivatives according to the optional `book.json` `rendering` settings. Master images in `images/` remain untouched.
+
 Verify after building:
 
 - ZIP test passes;

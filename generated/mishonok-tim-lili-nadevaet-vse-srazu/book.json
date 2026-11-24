@@ -6,6 +6,10 @@
   "slug": "mishonok-tim-lili-nadevaet-vse-srazu",
   "cover": "images/cover.png",
   "stylesheet": "epub.css",
+  "rendering": {
+    "max_image_dimension": 1800,
+    "jpeg_quality": 88
+  },
   "scenes": [
     {
       "image": "images/scene-01.png",

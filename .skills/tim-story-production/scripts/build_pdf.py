@@ -8,10 +8,10 @@ import tempfile
 from pathlib import Path
 
 from fpdf import FPDF
-from PIL import Image, ImageOps
+from PIL import Image
 from pypdf import PdfReader
 
-from build_epub import fail, load_manifest, safe_source
+from build_epub import fail, load_manifest, safe_source, write_jpeg_derivative
 
 
 FONT_CANDIDATES = (
@@ -46,21 +46,6 @@ def place_centered_image(pdf: FPDF, image_path: Path, max_height: float) -> None
     pdf.set_y(pdf.get_y() + height)
 
 
-def pdf_image(source: Path, destination: Path) -> Path:
-    with Image.open(source) as raw:
-        image = ImageOps.exif_transpose(raw)
-        image.thumbnail((2000, 2000), Image.Resampling.LANCZOS)
-        if image.mode in ("RGBA", "LA") or "transparency" in image.info:
-            rgba = image.convert("RGBA")
-            background = Image.new("RGB", rgba.size, "white")
-            background.paste(rgba, mask=rgba.getchannel("A"))
-            image = background
-        else:
-            image = image.convert("RGB")
-        image.save(destination, format="JPEG", quality=90, optimize=True)
-    return destination
-
-
 def build(story_dir: Path, output: Path, font_path: Path) -> None:
     data = load_manifest(story_dir)
     pdf = FPDF(format="A4", unit="mm")
@@ -76,13 +61,24 @@ def build(story_dir: Path, output: Path, font_path: Path) -> None:
         pdf.set_font("Story", size=18)
         pdf.multi_cell(0, 9, data["title"], align="C")
         pdf.ln(5)
-        cover = pdf_image(safe_source(story_dir, data["cover"]), temp_dir / "cover.jpg")
+        rendering = data["rendering"]
+        cover = write_jpeg_derivative(
+            safe_source(story_dir, data["cover"]),
+            temp_dir / "cover.jpg",
+            rendering["max_image_dimension"],
+            rendering["jpeg_quality"],
+        )
         place_centered_image(pdf, cover, max_height=230)
 
         for index, scene in enumerate(data["scenes"], start=1):
             pdf.add_page()
             source = safe_source(story_dir, scene["image"])
-            image_path = pdf_image(source, temp_dir / f"scene-{index:02d}.jpg")
+            image_path = write_jpeg_derivative(
+                source,
+                temp_dir / f"scene-{index:02d}.jpg",
+                rendering["max_image_dimension"],
+                rendering["jpeg_quality"],
+            )
             place_centered_image(pdf, image_path, max_height=145)
             pdf.ln(5)
             pdf.set_font("Story", size=11)

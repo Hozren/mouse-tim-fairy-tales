@@ -16,14 +16,14 @@ Before writing:
 
 Create the text and scene plan before generating images. Build a visual character anchor first, then use it as a reference for the cover and every scene. Generate original compositions with the corpus's broad visual qualities; do not copy a published illustration or request imitation of a named illustrator.
 
-Keep master images in `images/`. Create `book.json` only after text and scene numbering are final; its schema is in [references/book-json-schema.md](references/book-json-schema.md). Build the EPUB with:
+Keep master images in `images/`. Create `book.json` only after text and scene numbering are final; its schema is in [references/book-json-schema.md](references/book-json-schema.md). Install `.github/requirements-build.txt`, then build the EPUB with:
 
 ```bash
 python3 .skills/tim-story-production/scripts/build_epub.py \
   generated/<story-slug>
 ```
 
-Build the PDF after installing `.github/requirements-build.txt`:
+Build the PDF from the same manifest:
 
 ```bash
 python3 .skills/tim-story-production/scripts/build_pdf.py \

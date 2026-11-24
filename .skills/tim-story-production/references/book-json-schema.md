@@ -11,6 +11,10 @@ Create this file only after the story and scene plan are final. It is an explici
   "slug": "lowercase-story-slug",
   "cover": "images/cover.png",
   "stylesheet": "epub.css",
+  "rendering": {
+    "max_image_dimension": 1800,
+    "jpeg_quality": 88
+  },
   "scenes": [
     {
       "image": "images/scene-01.png",
@@ -28,6 +32,8 @@ Required top-level fields are `title`, `creator`, `language`, `identifier`, `slu
 
 Each scene requires `image`, `alt`, and a non-empty `paragraphs` array. Paths are relative to the story directory and must remain inside it. Images must be PNG, JPEG, GIF, or SVG. Use continuous filenames `scene-01` through `scene-N`; the builder checks this order.
 
+The optional `rendering` object controls publication derivatives while leaving master images untouched. `max_image_dimension` accepts 800–4000 pixels and `jpeg_quality` accepts 60–95. Defaults are 1800 and 88. PNG and JPEG masters are converted to optimized JPEG inside EPUB and PDF; SVG and GIF assets are copied into EPUB without conversion.
+
 Generate a UUID locally, for example:
 
 ```bash
@@ -35,4 +41,3 @@ python3 -c 'import uuid; print("urn:uuid:" + str(uuid.uuid4()))'
 ```
 
 Do not put planning notes, prompts, or hidden instructions in `book.json`; only final book metadata and published scene text belong there.
-

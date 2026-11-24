@@ -14,6 +14,8 @@ import zipfile
 from pathlib import Path
 from urllib.parse import quote
 
+from PIL import Image, ImageOps
+
 
 DEFAULT_CSS = """body { font-family: serif; line-height: 1.45; margin: 5%; }
 h1 { text-align: center; }
@@ -31,6 +33,9 @@ IMAGE_TYPES = {
     ".gif": "image/gif",
     ".svg": "image/svg+xml",
 }
+
+DEFAULT_JPEG_QUALITY = 88
+DEFAULT_MAX_IMAGE_DIMENSION = 1800
 
 
 def fail(message: str) -> None:
@@ -70,6 +75,24 @@ def load_manifest(story_dir: Path) -> dict:
     if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", data["slug"]):
         fail("slug must contain lowercase ASCII letters, digits, and hyphens")
 
+    rendering = data.get("rendering", {})
+    if not isinstance(rendering, dict):
+        fail("rendering must be an object")
+    quality = rendering.get("jpeg_quality", DEFAULT_JPEG_QUALITY)
+    max_dimension = rendering.get("max_image_dimension", DEFAULT_MAX_IMAGE_DIMENSION)
+    if isinstance(quality, bool) or not isinstance(quality, int) or not 60 <= quality <= 95:
+        fail("rendering.jpeg_quality must be an integer from 60 to 95")
+    if (
+        isinstance(max_dimension, bool)
+        or not isinstance(max_dimension, int)
+        or not 800 <= max_dimension <= 4000
+    ):
+        fail("rendering.max_image_dimension must be an integer from 800 to 4000")
+    data["rendering"] = {
+        "jpeg_quality": quality,
+        "max_image_dimension": max_dimension,
+    }
+
     safe_source(story_dir, data["cover"])
     for index, scene in enumerate(data["scenes"], start=1):
         if not isinstance(scene, dict):
@@ -101,6 +124,40 @@ def write_text(path: Path, value: str) -> None:
     path.write_text(value, encoding="utf-8", newline="\n")
 
 
+def write_jpeg_derivative(
+    source: Path,
+    destination: Path,
+    max_dimension: int,
+    quality: int,
+) -> Path:
+    with Image.open(source) as raw:
+        image = ImageOps.exif_transpose(raw)
+        image.thumbnail((max_dimension, max_dimension), Image.Resampling.LANCZOS)
+        if image.mode in ("RGBA", "LA") or "transparency" in image.info:
+            rgba = image.convert("RGBA")
+            background = Image.new("RGB", rgba.size, "white")
+            background.paste(rgba, mask=rgba.getchannel("A"))
+            image = background
+        else:
+            image = image.convert("RGB")
+        image.save(destination, format="JPEG", quality=quality, optimize=True)
+    return destination
+
+
+def prepare_epub_image(source: Path, target_stem: Path, data: dict) -> Path:
+    if source.suffix.lower() in {".png", ".jpg", ".jpeg"}:
+        rendering = data["rendering"]
+        return write_jpeg_derivative(
+            source,
+            target_stem.with_suffix(".jpg"),
+            rendering["max_image_dimension"],
+            rendering["jpeg_quality"],
+        )
+    destination = target_stem.with_suffix(source.suffix.lower())
+    shutil.copy2(source, destination)
+    return destination
+
+
 def build(story_dir: Path, output: Path) -> None:
     data = load_manifest(story_dir)
     with tempfile.TemporaryDirectory(prefix="tim-story-epub-") as temp_name:
@@ -128,17 +185,17 @@ def build(story_dir: Path, output: Path) -> None:
         write_text(styles / "book.css", css)
 
         cover_source = safe_source(story_dir, data["cover"])
-        cover_name = f"cover{cover_source.suffix.lower()}"
-        shutil.copy2(cover_source, media / cover_name)
-        cover_type = image_media_type(cover_source)
+        cover_target = prepare_epub_image(cover_source, media / "cover", data)
+        cover_name = cover_target.name
+        cover_type = image_media_type(cover_target)
 
         assets: list[tuple[str, str, str]] = []
         scene_markup: list[str] = []
         for index, scene in enumerate(data["scenes"], start=1):
             source = safe_source(story_dir, scene["image"])
-            target_name = f"scene-{index:02d}{source.suffix.lower()}"
-            shutil.copy2(source, media / target_name)
-            assets.append((f"scene-image-{index:02d}", f"media/{target_name}", image_media_type(source)))
+            target = prepare_epub_image(source, media / f"scene-{index:02d}", data)
+            target_name = target.name
+            assets.append((f"scene-image-{index:02d}", f"media/{target_name}", image_media_type(target)))
             paragraphs = "\n".join(f"<p>{xml_text(p)}</p>" for p in scene["paragraphs"])
             scene_markup.append(
                 f'<section id="scene-{index:02d}"><figure>'
