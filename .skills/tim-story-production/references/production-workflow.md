@@ -82,14 +82,17 @@ generated/<story-slug>/
 |   |-- character-anchor.png
 |   |-- cover.png or cover.jpg
 |   `-- scene-01.png ... scene-N.png
-`-- <story-slug>.epub
+|-- <story-slug>.epub
+`-- <story-slug>.pdf
 ```
 
 `story.md` is the editorial master. `design-notes.md` records how corpus recommendations were applied and labels the work unofficial. `prompts.md` records the shared generation specification. `image-manifest.md` records actual filenames, dimensions, scene meaning, tool, and quality checks. `book.json` is the final assembly manifest; do not duplicate unfinished drafts into it.
 
-## 6. EPUB assembly and verification
+## 6. EPUB and PDF assembly and verification
 
 Use `scripts/build_epub.py` with the story directory. It produces EPUB3 with XHTML, CSS, OPF, navigation, NCX fallback, cover metadata, and all scene images.
+
+Use `scripts/build_pdf.py` with the same story directory after installing `.github/requirements-build.txt`. It produces an A4 illustrated PDF from the same `book.json`, with a Unicode font and one opening page per scene.
 
 Verify after building:
 
@@ -101,6 +104,8 @@ Verify after building:
 - scene count matches `scene-plan.md`, `image-manifest.md`, and `book.json`;
 - text is readable in at least one EPUB reader when a reader is available;
 - final file size is practical for the requested delivery channel.
+
+For PDF verify that the header is valid, the file can be parsed, the title metadata is present, and the page count is at least the cover plus one page per scene. Text may continue onto an extra page when a scene is long.
 
 Do not discard the original full-resolution EPUB merely because a smaller delivery variant is created.
 
@@ -117,5 +122,5 @@ Before reporting completion, confirm all of the following:
 - cover, anchor, and every planned scene exist and were visually inspected;
 - manifests and filenames agree;
 - EPUB validation succeeds;
+- PDF validation succeeds;
 - project registry and change log are updated.
-

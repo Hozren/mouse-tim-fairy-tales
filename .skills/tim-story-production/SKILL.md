@@ -1,6 +1,6 @@
 ---
 name: tim-story-production
-description: Create a new unofficial illustrated children's story in the local «Мышонок Тим» project from a user premise, preserving the selected canon, the corpus-derived literary model, character continuity, scene-by-scene illustration coverage, project artifacts, and a validated EPUB3. Use for writing or rebuilding one complete story; do not use for corpus analysis alone or for editing original books in origin/.
+description: Create a new unofficial illustrated children's story in the local «Мышонок Тим» project from a user premise, preserving the selected canon, the corpus-derived literary model, character continuity, scene-by-scene illustration coverage, project artifacts, and validated EPUB3 and PDF editions. Use for writing or rebuilding one complete story; do not use for corpus analysis alone or for editing original books in origin/.
 ---
 
 # Tim Story Production
@@ -23,6 +23,13 @@ python3 .skills/tim-story-production/scripts/build_epub.py \
   generated/<story-slug>
 ```
 
-The builder validates required metadata, scene/image alignment, internal references, ZIP integrity, and the EPUB `mimetype` entry. Do not report completion until all literary, visual, artifact, and EPUB checks pass.
+Build the PDF after installing `.github/requirements-build.txt`:
+
+```bash
+python3 .skills/tim-story-production/scripts/build_pdf.py \
+  generated/<story-slug>
+```
+
+The builders validate required metadata, scene/image alignment, internal references, ZIP integrity, the EPUB `mimetype` entry, the PDF header, and the PDF page count. Do not report completion until all literary, visual, artifact, EPUB, and PDF checks pass.
 
 At the end, update `docs/README.md` and the current state plus change log in `AGENTS.md`, as required by the project rules.
