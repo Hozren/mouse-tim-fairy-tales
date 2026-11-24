@@ -9,7 +9,7 @@ Produce one complete story under `generated/<story-slug>/` from the repository r
 
 Before writing:
 
-1. Read `AGENTS.md`, `docs/README.md`, and the relevant parts of `docs/literary-analysis.md`.
+1. Read `AGENTS.md`, `docs/artifact-registry.md`, and the relevant parts of `docs/literary-analysis.md`.
 2. Choose one canon explicitly. For the Topo Tip canon use Tim, Lily, Teddy, family and the preschool world; never merge it with Diana Bulusheva's separate green-forest canon.
 3. Preserve the user's premise and its concrete required beats. Ask only when a missing choice would materially change the story.
 4. Read [references/production-workflow.md](references/production-workflow.md) and follow its literary, visual, artifact, and quality gates.
@@ -32,4 +32,4 @@ python3 .skills/tim-story-production/scripts/build_pdf.py \
 
 The builders validate required metadata, scene/image alignment, internal references, ZIP integrity, the EPUB `mimetype` entry, the PDF header, and the PDF page count. Do not report completion until all literary, visual, artifact, EPUB, and PDF checks pass.
 
-At the end, update `docs/README.md` and the current state plus change log in `AGENTS.md`, as required by the project rules.
+At the end, update `docs/artifact-registry.md` and the current state plus change log in `AGENTS.md`, as required by the project rules.
