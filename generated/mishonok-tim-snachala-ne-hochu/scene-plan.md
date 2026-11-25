@@ -69,3 +69,7 @@ Tim now in dry indoor blue sweater and navy trousers at bathroom sink, standing 
 ## scene-17 — Луна подождёт
 
 Tim in blue sweater and navy trousers lies relaxed on back on bedroom rug with Teddy on his belly; mother sits on carpet holding his free paw. Completed cardboard spaceship with one blue window and two tube engines beside them. Peaceful afternoon, no demand to play.
+
+## Уточнение диалогов — 2026-11-25
+
+В сцене 03 мама говорит «Тим, хватит говнюшничать»; в 06 папа объясняет слово через затянувшиеся отказы. В 08, 13 и 16 Тим сам называет это поведение. Визуальные действия не изменились; текущие иллюстрации соответствуют редакции.
