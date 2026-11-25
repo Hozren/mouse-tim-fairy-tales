@@ -64,7 +64,7 @@ def changed_story_slugs(root: Path, base: str, head: str) -> set[str]:
         "diff",
         "--no-renames",
         "--name-only",
-        "--diff-filter=ACMRTUXB",
+        "--diff-filter=ACDMRTUXB",
         "-z",
         base,
         head,

@@ -41,9 +41,9 @@ python .skills/tim-story-production/scripts/build_pdf.py \
 
 ## Автоматическая сборка
 
-GitHub Actions анализирует Git diff и формирует отдельный matrix job только для изменённых директорий `generated/<story-slug>/`. Для каждой выбранной сказки публикуется отдельный artifact с EPUB и PDF. Изменения остальных сказок не вызывают их пересборку.
+GitHub Actions анализирует Git diff и формирует отдельный matrix job только для изменённых директорий `generated/<story-slug>/`. Для каждой выбранной сказки при push в основную ветку публикуется отдельный GitHub Release с двумя прямыми файлами: EPUB и PDF, без ZIP. Новая сказка обнаруживается автоматически; изменение существующей создаёт новую версию. PR только проверяются. Изменения остальных сказок не вызывают их пересборку.
 
-Ручной запуск `workflow_dispatch` пересобирает все сказки. Подробности: [docs/build-pipeline.md](docs/build-pipeline.md).
+Ручной запуск `workflow_dispatch` или push тега `books-*` пересобирает все сказки. Подробности: [docs/build-pipeline.md](docs/build-pipeline.md).
 
 ## Как добавить новую сказку
 

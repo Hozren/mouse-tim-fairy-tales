@@ -2,6 +2,8 @@ name: Build changed stories
 
 on:
   push:
+    branches: ["**"]
+    tags: ["books-*"]
   pull_request:
   workflow_dispatch:
 
@@ -29,9 +31,10 @@ jobs:
           HEAD_SHA: ${{ github.event.pull_request.head.sha || github.event.after }}
           DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
           REF_NAME: ${{ github.ref_name }}
+          REF_TYPE: ${{ github.ref_type }}
           REF_DELETED: ${{ github.event.deleted }}
         run: |
-          if [[ "$EVENT_NAME" == "workflow_dispatch" ]]; then
+          if [[ "$EVENT_NAME" == "workflow_dispatch" || "$REF_TYPE" == "tag" ]]; then
             python3 .github/scripts/detect_changed_stories.py \
               --event manual \
               --github-output "$GITHUB_OUTPUT"
@@ -53,6 +56,8 @@ jobs:
   build:
     name: Build ${{ matrix.slug }}
     needs: detect
+    permissions:
+      contents: write
     if: needs.detect.outputs.count != '0'
     runs-on: ubuntu-latest
     strategy:
@@ -83,13 +88,24 @@ jobs:
           python3 .skills/tim-story-production/scripts/build_pdf.py "$STORY_DIR" \
             --output "_dist/$STORY_SLUG/$STORY_SLUG.pdf"
 
-      - name: Publish story artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: story-${{ matrix.slug }}-${{ github.run_id }}-${{ github.run_attempt }}
-          path: |
-            _dist/${{ matrix.slug }}/${{ matrix.slug }}.epub
-            _dist/${{ matrix.slug }}/${{ matrix.slug }}.pdf
-          if-no-files-found: error
-          compression-level: 0
-          retention-days: 30
+      - name: Publish EPUB and PDF as separate release assets
+        if: >-
+          github.event_name != 'pull_request' &&
+          (github.ref_name == github.event.repository.default_branch || github.ref_type == 'tag')
+        env:
+          GH_TOKEN: ${{ github.token }}
+          STORY_SLUG: ${{ matrix.slug }}
+          SOURCE_SHA: ${{ github.sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          release_tag="story-${STORY_SLUG}-${SOURCE_SHA}"
+          if ! gh release view "$release_tag" >/dev/null 2>&1; then
+            gh release create "$release_tag" --target "$SOURCE_SHA" --draft \
+              --title "$STORY_SLUG" \
+              --notes "EPUB и PDF отдельными файлами, без ZIP. Исходники: $SOURCE_SHA. Оба формата прошли встроенные проверки сборщиков."
+          fi
+          gh release upload "$release_tag" \
+            "_dist/$STORY_SLUG/$STORY_SLUG.epub" \
+            "_dist/$STORY_SLUG/$STORY_SLUG.pdf" --clobber
+          gh release edit "$release_tag" --draft=false --latest=false
