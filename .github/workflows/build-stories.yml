@@ -96,16 +96,18 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           STORY_SLUG: ${{ matrix.slug }}
           SOURCE_SHA: ${{ github.sha }}
+          STORY_DIR: ${{ matrix.path }}
         shell: bash
         run: |
           set -euo pipefail
           release_tag="story-${STORY_SLUG}-${SOURCE_SHA}"
+          story_title=$(python3 -c 'import json, os; from pathlib import Path; print(json.loads((Path(os.environ["STORY_DIR"]) / "book.json").read_text())["title"])')
           if ! gh release view "$release_tag" >/dev/null 2>&1; then
             gh release create "$release_tag" --target "$SOURCE_SHA" --draft \
-              --title "$STORY_SLUG" \
+              --title "$story_title" \
               --notes "EPUB и PDF отдельными файлами, без ZIP. Исходники: $SOURCE_SHA. Оба формата прошли встроенные проверки сборщиков."
           fi
           gh release upload "$release_tag" \
             "_dist/$STORY_SLUG/$STORY_SLUG.epub" \
             "_dist/$STORY_SLUG/$STORY_SLUG.pdf" --clobber
-          gh release edit "$release_tag" --draft=false --latest=false
+          gh release edit "$release_tag" --draft=false --latest=false --title "$story_title"
