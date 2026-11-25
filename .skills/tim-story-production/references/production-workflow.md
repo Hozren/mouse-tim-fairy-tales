@@ -82,9 +82,10 @@ generated/<story-slug>/
 |   |-- character-anchor.png
 |   |-- cover.png or cover.jpg
 |   `-- scene-01.png ... scene-N.png
-|-- <story-slug>.epub
-`-- <story-slug>.pdf
+
 ```
+
+Publication EPUB/PDF files belong in ignored `_dist/<story-slug>/` and GitHub Releases, not in the source directory. Never commit ZIP transport duplicates.
 
 `story.md` is the editorial master. `design-notes.md` records how corpus recommendations were applied and labels the work unofficial. `prompts.md` records the shared generation specification. `image-manifest.md` records actual filenames, dimensions, scene meaning, tool, and quality checks. `book.json` is the final assembly manifest; do not duplicate unfinished drafts into it.
 

@@ -30,6 +30,8 @@ python3 .skills/tim-story-production/scripts/build_pdf.py \
   generated/<story-slug>
 ```
 
+Both builders default to the repository’s ignored `_dist/<story-slug>/`. Publish EPUB/PDF through GitHub Releases using a `books-*` tag; do not commit publication binaries or ZIP duplicates. Preserve unpacked books in `origin/` for analysis; original EPUB archives are intentionally omitted.
+
 The builders validate required metadata, scene/image alignment, internal references, ZIP integrity, the EPUB `mimetype` entry, the PDF header, and the PDF page count. Do not report completion until all literary, visual, artifact, EPUB, and PDF checks pass.
 
 At the end, update `docs/artifact-registry.md` and the current state plus change log in `AGENTS.md`, as required by the project rules.

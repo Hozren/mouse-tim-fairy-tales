@@ -315,7 +315,7 @@ def main() -> None:
     if not story_dir.is_dir():
         fail(f"not a directory: {story_dir}")
     data = load_manifest(story_dir)
-    output = args.output.resolve() if args.output else story_dir / f"{data['slug']}.epub"
+    output = args.output.resolve() if args.output else Path(__file__).resolve().parents[3] / "_dist" / data["slug"] / f"{data['slug']}.epub"
     build(story_dir, output)
     print(f"built: {output}")
     print(f"size: {output.stat().st_size} bytes")

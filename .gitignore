@@ -4,3 +4,10 @@ __pycache__/
 .DS_Store
 Thumbs.db
 _dist/
+
+# Publication binaries live in Releases, not Git.
+/origin/*.epub
+/generated/**/*.epub
+/generated/**/*.pdf
+/generated/**/*.zip
+/generated/*.zip
